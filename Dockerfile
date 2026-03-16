@@ -7,6 +7,6 @@ RUN pip install -r requirements.txt
 
 COPY app.py .
 
-EXPOSE 8080
+ENV PORT=8080
 
-CMD gunicorn app:app --timeout 180 --workers 1 --bind 0.0.0.0:${PORT:-8080}
+CMD ["sh", "-c", "gunicorn app:app --timeout 180 --workers 1 --bind 0.0.0.0:${PORT}"]
