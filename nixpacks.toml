@@ -1,13 +1,10 @@
 [variables]
 PYTHON_VERSION = "3.11"
-PLAYWRIGHT_BROWSERS_PATH = "/app/ms-playwright"
+```
+*(Solo esa línea — Railway detectará el Dockerfile automáticamente y usará eso)*
 
-[phases.install]
-cmds = [
-  "pip install -r requirements.txt",
-  "playwright install chromium",
-  "playwright install-deps chromium"
-]
+---
 
-[start]
-cmd = "gunicorn app:app --timeout 180 --workers 1 --bind 0.0.0.0:$PORT"
+### 3. Editar `Procfile` — reemplazar todo con esto:
+```
+web: gunicorn app:app --timeout 180 --workers 1
